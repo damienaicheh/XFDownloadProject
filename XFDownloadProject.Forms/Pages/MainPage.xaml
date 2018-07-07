@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:XFDownloadProject" 
+             x:Class="XFDownloadProject.Forms.Pages.MainPage"
+             xmlns:converters="using:XFDownloadProject.Forms.Converters">
+
+    <ContentPage.Resources>
+        <converters:InverterBooleanConverter x:Key="InverterBooleanConverter" />
+        <converters:ValueProgressBarConverter x:Key="ValueProgressBarConverter" />
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Text="Download a file with a progress bar in Xamarin Forms !" FontSize="Large"
+               HorizontalOptions="Center" VerticalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+
+        <StackLayout Grid.Row="1" Spacing="20">
+            
+            <ProgressBar Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" Margin="10,0"/>
+            
+            <Label Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" HorizontalOptions="Center" />
+            
+            <Button Text="Start Download" 
+                    Command="{Binding StartDownloadCommand}"
+                    IsEnabled="{Binding IsDownloading, Converter={StaticResource InverterBooleanConverter}}" />
+            
+        </StackLayout>
+
+    </Grid>
+</ContentPage>
