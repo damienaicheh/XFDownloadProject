@@ -10,8 +10,6 @@ namespace XFDownloadProject.iOS.Services
         {
             string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string libFolder = Path.Combine(docFolder, "..", "Library");
-
-            System.Diagnostics.Debug.WriteLine(libFolder);
             return libFolder;
         }
     }
