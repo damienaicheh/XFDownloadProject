@@ -12,6 +12,10 @@ namespace XFDownloadProject.ViewModels
     public class DownloadViewModel : ViewModelBase
     {
         private double _progressValue;
+        /// <summary>
+        /// Gets or sets the progress value.
+        /// </summary>
+        /// <value>The progress value.</value>
         public double ProgressValue
         {
             get { return _progressValue; }
@@ -19,14 +23,26 @@ namespace XFDownloadProject.ViewModels
         }
 
         private bool _isDownloading;
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="T:XFDownloadProject.ViewModels.DownloadViewModel"/>
+        /// is downloading.
+        /// </summary>
+        /// <value><c>true</c> if is downloading; otherwise, <c>false</c>.</value>
         public bool IsDownloading
         {
             get { return _isDownloading; }
             set { Set(ref _isDownloading, value); }
         }
 
+        /// <summary>
+        /// The download service.
+        /// </summary>
         private readonly IDownloadService _downloadService;
 
+        /// <summary>
+        /// Gets the start download command.
+        /// </summary>
+        /// <value>The start download command.</value>
         public ICommand StartDownloadCommand { get; }
 
         public DownloadViewModel(IDownloadService downloadService)
@@ -35,6 +51,10 @@ namespace XFDownloadProject.ViewModels
             StartDownloadCommand = new RelayCommand(async () => await StartDownloadAsync());
         }
 
+        /// <summary>
+        /// Starts the download async.
+        /// </summary>
+        /// <returns>The download async.</returns>
         public async Task StartDownloadAsync()
         { 
             var progressIndicator = new Progress<double>(ReportProgress);
@@ -58,6 +78,10 @@ namespace XFDownloadProject.ViewModels
             }
         }
 
+        /// <summary>
+        /// Reports the progress status for the downlaod.
+        /// </summary>
+        /// <param name="value">Value.</param>
         internal void ReportProgress(double value)
         {
             ProgressValue = value;

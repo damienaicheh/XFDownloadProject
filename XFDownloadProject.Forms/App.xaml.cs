@@ -13,13 +13,13 @@ namespace XFDownloadProject.Forms
         public App()
         {
             InitializeComponent();
-            // MainPage must bu not null for UWP.
+            // MainPage must be not null for UWP.
             MainPage = new ContentPage();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // Handle when your app starts.
             Bootstrap.Instance.Setup();
 
             MainPage = new MainPage();

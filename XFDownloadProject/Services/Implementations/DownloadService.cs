@@ -19,7 +19,11 @@ namespace XFDownloadProject.Services.Implementations
         /// </summary>
         private readonly IFileService _fileService;
 
+        /// <summary>
+        /// The size of the buffer.
+        /// </summary>
         private int bufferSize = 4095;
+
 
         public DownloadService(IFileService fileService)
         {
@@ -98,6 +102,11 @@ namespace XFDownloadProject.Services.Implementations
             }
         }
 
+        /// <summary>
+        /// Opens the stream.
+        /// </summary>
+        /// <returns>The stream.</returns>
+        /// <param name="path">Path.</param>
         private Stream OpenStream(string path)
         {
             return new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None, bufferSize);
