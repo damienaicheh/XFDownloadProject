@@ -85,7 +85,6 @@ namespace XFDownloadProject.ViewModels
         internal void ReportProgress(double value)
         {
             ProgressValue = value;
-            System.Diagnostics.Debug.WriteLine(value.ToString());
         }       
     }
 }

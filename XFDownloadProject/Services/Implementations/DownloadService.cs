@@ -54,8 +54,8 @@ namespace XFDownloadProject.Services.Implementations
                 var fileName = response.Content.Headers?.ContentDisposition?.FileName ?? "tmp.zip";
 
                 // Step 3 : Get total of data
-                var totalData = response.Content.Headers.ContentLength.HasValue ? response.Content.Headers.ContentLength.Value : -1L;
-                var canSendProgress = totalData != -1 && progress != null;
+                var totalData = response.Content.Headers.ContentLength.GetValueOrDefault(-1L);
+                var canSendProgress = totalData != -1L && progress != null;
 
                 // Step 4 : Get total of data
                 var filePath = Path.Combine(_fileService.GetStorageFolderPath(), fileName);
